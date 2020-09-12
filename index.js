@@ -1,11 +1,11 @@
 const http = require('http');
 const port = process.env.PORT || 3000;
-const applicationVersion = process.env.APPLICATION_VERSION;
-const environment = process.env.ENVIROMENT;
+const appVersion = process.env.APP_VERSION;
+const appEnv = process.env.APP_ENV;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  const msg = `Hello World! ${applicationVersion} - ${environment}`;
+  const msg = `Hello World! ${appVersion} - ${appEnv}`;
   res.end(msg);
 });
 
