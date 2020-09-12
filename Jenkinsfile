@@ -19,9 +19,9 @@ pipeline {
         RELEASE_CLUSTER = 'nodejs-release-cluster'
         RELEASE_SERVICE = 'nodejs-release-srv'
 
-        STAGING_TASK    = 'nodejs-release-task'
-        STAGING_CLUSTER = 'nodejs-release-cluster'
-        STAGING_SERVICE = 'nodejs-release-srv'
+        STAGING_TASK    = 'nodejs-staging-task'
+        STAGING_CLUSTER = 'nodejs-staging-cluster'
+        STAGING_SERVICE = 'nodejs-staging-srv'
     }
 
     stages {
