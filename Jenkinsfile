@@ -15,14 +15,19 @@ pipeline {
         AWS_DEFAULT_REGION    = 'ap-southeast-1'
         AWS_DEFAULT_OUTPUT    = 'json'
 
-        RELEASE_TASK    = 'nodejs-release-task-definition'
+        RELEASE_TASK    = 'nodejs-release-task'
         RELEASE_CLUSTER = 'nodejs-release-cluster'
         RELEASE_SERVICE = 'nodejs-release-srv'
+
+        STAGING_TASK    = 'nodejs-release-task'
+        STAGING_CLUSTER = 'nodejs-release-cluster'
+        STAGING_SERVICE = 'nodejs-release-srv'
     }
 
     stages {
         stage('Build') {
             steps {
+                echo '****** Build and tag image docker ******'
                 sh './jenkins/build.sh'
             }
         }
@@ -31,6 +36,17 @@ pipeline {
             steps {
                 echo '****** Push docker image to ECR ******'
                 sh './jenkins/push.sh'
+            }
+        }
+
+        stage('[NODEJS] Deploy to staging') {
+            when {
+                branch 'staging'
+            }
+
+            steps {
+                echo "****** Deploy to ${BRANCH_NAME} branch ******"
+                sh './jenkins/deploy_staging.sh'
             }
         }
 
