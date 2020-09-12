@@ -39,26 +39,26 @@ pipeline {
             }
         }
 
-        stage('[NODEJS] Deploy to staging') {
-            when {
-                branch 'staging'
-            }
+        // stage('[NODEJS] Deploy to staging') {
+        //     when {
+        //         branch 'staging'
+        //     }
 
-            steps {
-                echo "****** Deploy to ${BRANCH_NAME} branch ******"
-                sh './jenkins/deploy_staging.sh'
-            }
-        }
+        //     steps {
+        //         echo "****** Deploy to ${BRANCH_NAME} branch ******"
+        //         sh './jenkins/deploy_staging.sh'
+        //     }
+        // }
 
-        stage('[NODEJS] Deploy to master') {
-            when {
-                branch 'master'
-            }
+        // stage('[NODEJS] Deploy to master') {
+        //     when {
+        //         branch 'master'
+        //     }
 
-            steps {
-                echo "****** Deploy to ${BRANCH_NAME} branch ******"
-                sh './jenkins/deploy_master.sh'
-            }
-        }
+        //     steps {
+        //         echo "****** Deploy to ${BRANCH_NAME} branch ******"
+        //         sh './jenkins/deploy_master.sh'
+        //     }
+        // }
     }
 }
