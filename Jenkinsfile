@@ -7,6 +7,7 @@ pipeline {
         DOCKER_IMAGE = 'node-hello'
 
         ECR_REPO = '411163866686.dkr.ecr.ap-southeast-1.amazonaws.com/node-hello'
+        ECR = '411163866686.dkr.ecr.ap-southeast-1.amazonaws.com'
         APP_VERSION = "${BUILD_ID}"
         APP_ENV = "${BRANCH_NAME}"
 
