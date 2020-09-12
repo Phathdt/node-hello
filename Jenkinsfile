@@ -7,7 +7,6 @@ pipeline {
         DOCKER_IMAGE = 'node-hello'
 
         ECR_REPO = '411163866686.dkr.ecr.ap-southeast-1.amazonaws.com/node-hello'
-        ECR = '411163866686.dkr.ecr.ap-southeast-1.amazonaws.com'
         APP_VERSION = "${BUILD_ID}"
         APP_ENV = "${BRANCH_NAME}"
 
@@ -35,15 +34,15 @@ pipeline {
             }
         }
 
-        // stage('[NODEJS] Deploy to staging') {
-        //     when {
-        //         branch 'staging'
-        //     }
+        stage('[NODEJS] Deploy to master') {
+            when {
+                branch 'master'
+            }
 
-        //     steps {
-        //         echo "****** Deploy to ${BRANCH_NAME} branch ******"
-        //         sh './jenkins/deploy_staging.sh'
-        //     }
-        // }
+            steps {
+                echo "****** Deploy to ${BRANCH_NAME} branch ******"
+                sh './jenkins/deploy_master.sh'
+            }
+        }
     }
 }
